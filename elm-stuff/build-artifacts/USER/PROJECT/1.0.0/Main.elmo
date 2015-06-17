@@ -1,0 +1,90 @@
+Elm.Main = Elm.Main || {};
+Elm.Main.make = function (_elm) {
+   "use strict";
+   _elm.Main = _elm.Main || {};
+   if (_elm.Main.values)
+   return _elm.Main.values;
+   var _op = {},
+   _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   $moduleName = "Main",
+   $Basics = Elm.Basics.make(_elm),
+   $Color = Elm.Color.make(_elm),
+   $Graphics$Collage = Elm.Graphics.Collage.make(_elm),
+   $Graphics$Element = Elm.Graphics.Element.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Text = Elm.Text.make(_elm);
+   var displayCell = function (_v0) {
+      return function () {
+         switch (_v0.ctor)
+         {case "Cell":
+            return A2($Graphics$Collage.move,
+              {ctor: "_Tuple2"
+              ,_0: _v0._0.x
+              ,_1: _v0._0.y},
+              $Graphics$Collage.group(_L.fromArray([A2($Graphics$Collage.filled,
+                                                   $Color.red,
+                                                   A2($Graphics$Collage.rect,
+                                                   30,
+                                                   30))
+                                                   ,$Graphics$Collage.text($Text.bold($Text.fromString(_v0._0.v)))])));}
+         _U.badCase($moduleName,
+         "on line 25, column 24 to 114");
+      }();
+   };
+   var display = function (_v3) {
+      return function () {
+         switch (_v3.ctor)
+         {case "Game":
+            return A2($Graphics$Collage.collage,
+              120,
+              120)(A2($List.map,
+              displayCell,
+              _v3._0.cells));}
+         _U.badCase($moduleName,
+         "on line 22, column 20 to 67");
+      }();
+   };
+   var Game = function (a) {
+      return {ctor: "Game",_0: a};
+   };
+   var Cell = function (a) {
+      return {ctor: "Cell",_0: a};
+   };
+   var main = display(Game({_: {}
+                           ,cells: _L.fromArray([Cell({_: {}
+                                                      ,v: "1"
+                                                      ,x: -40
+                                                      ,y: -40})
+                                                ,Cell({_: {}
+                                                      ,v: "2"
+                                                      ,x: 0
+                                                      ,y: -40})
+                                                ,Cell({_: {}
+                                                      ,v: "3"
+                                                      ,x: 40
+                                                      ,y: -40})
+                                                ,Cell({_: {}
+                                                      ,v: "4"
+                                                      ,x: -40
+                                                      ,y: 0})
+                                                ,Cell({_: {},v: "5",x: 0,y: 0})
+                                                ,Cell({_: {},v: "6",x: 40,y: 0})
+                                                ,Cell({_: {}
+                                                      ,v: "7"
+                                                      ,x: -40
+                                                      ,y: 40})
+                                                ,Cell({_: {},v: "8",x: 0,y: 40})
+                                                ,Cell({_: {}
+                                                      ,v: " "
+                                                      ,x: 40
+                                                      ,y: 40})])}));
+   _elm.Main.values = {_op: _op
+                      ,Cell: Cell
+                      ,Game: Game
+                      ,main: main
+                      ,display: display
+                      ,displayCell: displayCell};
+   return _elm.Main.values;
+};
